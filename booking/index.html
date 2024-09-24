@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 50px 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="datetime-local"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="datetime-local"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .generate-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .generate-btn:hover {
+            background-color: #c82333;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .submitbtn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .submitbtn:hover {
+            background-color: #c82333;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .submitbtn {
+            animation: pulse 2.5s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            form {
+                padding: 20px;
+            }
+            h4 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm" method="post" action="submit_booking.php">
+    <h4>Booking ID</h4>
+    <div class="booking-id">
+        <input type="text" id="bookingId" name="bookingId" readonly>
+        <button type="button" id="generateBookingId" class="generate-btn">Generate</button>
+    </div>
+    <h4>Enter Your Full Name</h4>
+    <input type="text" name="myname1" placeholder="Name" id="name" required size="60">
+    <h4>Enter Your Email</h4>
+    <input type="email" name="myemail" placeholder="Email-Id" id="email" required size="40">
+    <h4>Enter Your Phone No</h4>
+    <input type="tel" name="myphone" placeholder="Phone No." id="phonenum" required size="20">
+    <h4>Select The Date and Time Of Your Booking</h4>
+    <input type="datetime-local" name="myage" id="age" required size="8">
+
+    <h4>No Of Guests</h4>
+    <select name="mygender" id="guests" required>
+        <option value="">Select Number of Guests</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    
+    <h4>No of Childrens</h4>
+    <select name="myname2" id="children" required>
+        <option value="">Select Number of Children</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <input type="checkbox" name="t&c" id="tnc" checked required> I accept the Terms & Conditions.
+    <br><br>
+    <input type="submit" value="Submit" class="submitbtn">
+</form>
+<a href="check_status.php">Check Status</a>
+
+<script>
+    document.getElementById("generateBookingId").addEventListener("click", function() {
+        var chars = '0123456789';
+        var length = 8;
+        var bookingId = '';
+        for (var i = 0; i < length; i++) {
+            bookingId += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        document.getElementById("bookingId").value = bookingId;
+    });
+</script>
+
+</body>
+</html>
